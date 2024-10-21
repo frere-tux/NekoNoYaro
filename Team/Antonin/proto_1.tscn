@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgak2ba4gd6od"]
+
+[ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/cat.tscn" id="1_0fohe"]
+[ext_resource type="Material" uid="uid://cogi81ciqr2qv" path="res://Team/Antonin/mat_debug_grid.tres" id="2_p1xwi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7s4er"]
+size = Vector3(16.5, 0.21, 2.189)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1esgy"]
+
+[node name="Proto1" type="Node3D"]
+
+[node name="cat" parent="." instance=ExtResource("1_0fohe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.570256, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.578, 1.499)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8276, -0.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_7s4er")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(16.5746, 0, 0, 0, 0.213792, 0, 0, 0, 2.1894, 0, 0, 0)
+material_override = ExtResource("2_p1xwi")
+mesh = SubResource("BoxMesh_1esgy")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.767277, 0.415547, -0.488474, 0.149516, 0.624776, 0.766355, 0.623643, -0.661041, 0.417245, -3.82754, 2.79852, 0)
