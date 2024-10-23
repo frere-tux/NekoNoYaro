@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c84qbro40nery"
-path.s3tc="res://.godot/imported/Cat-01-Anims.png-aac8e0ae3332956dd2948972afadd21b.s3tc.ctex"
+path="res://.godot/imported/Cat-01-Anims.png-aac8e0ae3332956dd2948972afadd21b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Art/CH/Cats/Cat-01-Anims.png"
-dest_files=["res://.godot/imported/Cat-01-Anims.png-aac8e0ae3332956dd2948972afadd21b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Cat-01-Anims.png-aac8e0ae3332956dd2948972afadd21b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
