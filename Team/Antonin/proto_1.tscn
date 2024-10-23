@@ -1,32 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgak2ba4gd6od"]
+[gd_scene load_steps=7 format=3 uid="uid://dgak2ba4gd6od"]
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/cat.tscn" id="1_0fohe"]
-[ext_resource type="Material" uid="uid://cogi81ciqr2qv" path="res://Team/Antonin/mat_debug_grid.tres" id="2_p1xwi"]
+[ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
+[ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="2_psw54"]
+[ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="4_x3jev"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7s4er"]
-size = Vector3(16.5, 0.21, 2.189)
+[sub_resource type="Curve3D" id="Curve3D_6pvdl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.000881642, 3.31402e-05, 0.000422451, -1.57891, 0, 0.713018, 1.57891, 0, -0.713018, 14.6523, 3.31402e-05, -0.00940989, -0.00202179, 0, 1.51286, 0.00202179, 0, -1.51286, 24.4476, 3.31402e-05, -11.6758, 0, 0, 0, 0, 0, 0, 15.9679, 3.31402e-05, -24.2548),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
-[sub_resource type="BoxMesh" id="BoxMesh_1esgy"]
+[sub_resource type="LabelSettings" id="LabelSettings_mfoh8"]
+font_size = 42
 
 [node name="Proto1" type="Node3D"]
+script = ExtResource("1_s66ij")
 
-[node name="cat" parent="." instance=ExtResource("1_0fohe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.570256, 0)
+[node name="Gameplay" type="Node" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.578, 1.499)
+[node name="CatPath" type="Path3D" parent="Gameplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.257601, 0)
+curve = SubResource("Curve3D_6pvdl")
+script = ExtResource("4_x3jev")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8276, -0.4, 0)
+[node name="Cat" parent="Gameplay" node_paths=PackedStringArray("cat_path") instance=ExtResource("1_0fohe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00917912, 0, 0.02244)
+cat_path = NodePath("../CatPath")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_7s4er")
+[node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
+transform = Transform3D(0.979925, 0.03462, -0.196339, 0, 0.984808, 0.173648, 0.199368, -0.170162, 0.965037, -0.3, 0.515, 3.27)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(16.5746, 0, 0, 0, 0.213792, 0, 0, 0, 2.1894, 0, 0, 0)
-material_override = ExtResource("2_p1xwi")
-mesh = SubResource("BoxMesh_1esgy")
-skeleton = NodePath("../..")
+[node name="Label" type="Label" parent="Gameplay"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 773.0
+offset_bottom = 221.0
+text = "[ENTER] to start
+[SPACE] or [UP] to jump
+[R] to reset
+[ESCAPE] to quit"
+label_settings = SubResource("LabelSettings_mfoh8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Level" type="Node" parent="."]
+
+[node name="Plateform1" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 19.6491, -0.4, -5.93426)
+
+[node name="Plateform4" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.20716, 0, 0.611363, 0, 2.59167, 0, -0.245506, 0, 0.515874, 20.6736, -0.0621171, -7.14691)
+
+[node name="Plateform2" parent="Level" instance=ExtResource("2_psw54")]
+
+[node name="Plateform3" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(-0.563987, 0, 0.825783, 0, 1, 0, -0.825783, 0, -0.563987, 20.2714, -0.4, -17.8229)
+
+[node name="Plateform5" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(-0.275129, 0, 0.735302, 0, 1, 0, -0.402841, 0, -0.502191, 19.453, 0.532416, -19.0212)
+
+[node name="Plateform6" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(-0.221013, 0, 0.764535, 0, 1.00145, 0, -0.323604, 0, -0.522156, 17.5075, 1.33563, -21.8699)
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(0.767277, 0.415547, -0.488474, 0.149516, 0.624776, 0.766355, 0.623643, -0.661041, 0.417245, -3.82754, 2.79852, 0)
