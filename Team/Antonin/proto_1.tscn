@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgak2ba4gd6od"]
+[gd_scene load_steps=8 format=3 uid="uid://dgak2ba4gd6od"]
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="2_psw54"]
 [ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="4_x3jev"]
+[ext_resource type="PackedScene" uid="uid://c8fbbrr6tfyxd" path="res://Art/Environment/Props/Vendin-Machin_1.glb" id="5_gahg1"]
 
 [sub_resource type="Curve3D" id="Curve3D_6pvdl"]
 _data = {
@@ -13,7 +14,7 @@ _data = {
 point_count = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_mfoh8"]
-font_size = 42
+font_size = 40
 
 [node name="Proto1" type="Node3D"]
 script = ExtResource("1_s66ij")
@@ -30,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00917912, 0, 0.02244)
 cat_path = NodePath("../CatPath")
 
 [node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
-transform = Transform3D(0.979925, 0.03462, -0.196339, 0, 0.984808, 0.173648, 0.199368, -0.170162, 0.965037, -0.3, 0.515, 3.27)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0.905, 0.515, 3.27)
 
 [node name="Label" type="Label" parent="Gameplay"]
 offset_left = 20.0
@@ -39,6 +40,7 @@ offset_right = 773.0
 offset_bottom = 221.0
 text = "[ENTER] to start
 [SPACE] or [UP] to jump
+[CTRL] or [DOWN] to slide
 [R] to reset
 [ESCAPE] to quit"
 label_settings = SubResource("LabelSettings_mfoh8")
@@ -49,7 +51,7 @@ label_settings = SubResource("LabelSettings_mfoh8")
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 19.6491, -0.4, -5.93426)
 
 [node name="Plateform4" parent="Level" instance=ExtResource("2_psw54")]
-transform = Transform3D(0.20716, 0, 0.611363, 0, 2.59167, 0, -0.245506, 0, 0.515874, 20.6736, -0.0621171, -7.14691)
+transform = Transform3D(0.149746, 0, 0.610686, 0, 2.21064, 0, -0.177465, 0, 0.515303, 20.6736, 0.236645, -7.14691)
 
 [node name="Plateform2" parent="Level" instance=ExtResource("2_psw54")]
 
@@ -62,7 +64,10 @@ transform = Transform3D(-0.275129, 0, 0.735302, 0, 1, 0, -0.402841, 0, -0.502191
 [node name="Plateform6" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(-0.221013, 0, 0.764535, 0, 1.00145, 0, -0.323604, 0, -0.522156, 17.5075, 1.33563, -21.8699)
 
+[node name="Vendin-Machin_1" parent="Level" instance=ExtResource("5_gahg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15166, -0.318365, -0.787264)
+
 [node name="Lights" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(0.767277, 0.415547, -0.488474, 0.149516, 0.624776, 0.766355, 0.623643, -0.661041, 0.417245, -3.82754, 2.79852, 0)
+transform = Transform3D(0.796117, 0.467584, 0.38414, -0.574818, 0.385889, 0.721577, 0.189162, -0.79527, 0.575989, -3.82754, 2.79852, 3.57177)
