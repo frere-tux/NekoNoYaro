@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cwx0ocumlauhb"]
+[gd_scene load_steps=72 format=3 uid="uid://cwx0ocumlauhb"]
 
 [ext_resource type="Texture2D" uid="uid://c84qbro40nery" path="res://Art/CH/Cats/Cat-01-Anims.png" id="1_6s7c6"]
 [ext_resource type="Script" path="res://Team/Antonin/cat.gd" id="1_ok6rl"]
@@ -539,20 +539,49 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ws1y"]
-radius = 0.196
+radius = 0.18
 height = 0.615
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uj45d"]
+radius = 0.08
+height = 0.6
+
 [node name="Cat" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_ok6rl")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501059, 0.399838, 0)
 pixel_size = 0.025
+double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bfegm")
-animation = &"Jump"
+animation = &"Run"
 autoplay = "Stand_Idle"
+frame_progress = 0.588647
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BaseCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.196131, 0)
+shape = SubResource("CapsuleShape3D_1ws1y")
+
+[node name="SlideCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00815576, 0.0800738, 0)
+shape = SubResource("CapsuleShape3D_uj45d")
+disabled = true
+
+[node name="DebugLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -346.0
+offset_top = 15.0
+offset_right = -25.0
+offset_bottom = 62.0
+grow_horizontal = 0
+
+[node name="CeilingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296569, 0.195921, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingTrigger"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.000900209, 0)
 shape = SubResource("CapsuleShape3D_1ws1y")
