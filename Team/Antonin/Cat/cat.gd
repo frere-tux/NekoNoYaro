@@ -23,6 +23,9 @@ class_name Cat extends CharacterBody3D
 @export var min_slide_time:	float = 0.5
 @export var max_slide_time:	float = 1.0
 
+# Hit
+@export var hit_jum_velocity: float = 2.0
+@export var hit_path_setback: float = 3.0
 
 func _ready():
 	position = cat_path.path_follow.position
@@ -41,9 +44,11 @@ func _physics_process(delta):
 	rotate_y(deg_to_rad(90))
 	
 	
-#func _process(delta):
+func _process(delta):
+	#debug_label.text = str(cat_path.path_follow.progress)
 	#debug_label.text = state_machine.state.name
 	#debug_label.text = "Ceiling" if ceiling_trigger.has_overlapping_bodies() else "No ceiling"
+	pass
 	
 		
 func enable_slide_collision(enabled: bool):
@@ -56,14 +61,11 @@ func update_velocity_to_follow_path(speed: float, delta: float):
 	direction.y = 0.0
 	var distanceToPath = direction.length()
 		
-	if distanceToPath < lost_path_distance:
-		cat_path.path_follow.progress += speed * delta
-		direction = cat_path.path_follow.position - position
-		direction.y = 0.0
-		distanceToPath = direction.length();
+	cat_path.path_follow.progress += speed * delta
+	direction = cat_path.path_follow.position - position
+	direction.y = 0.0
+	distanceToPath = direction.length();
 		
-	if distanceToPath < 0.05:
-		direction *= 0.0
 			
 	direction = direction.normalized()
 		

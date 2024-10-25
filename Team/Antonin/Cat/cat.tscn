@@ -546,15 +546,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ws1y"]
-radius = 0.175
+radius = 0.230162
 height = 0.615
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uj45d"]
-radius = 0.08
+radius = 0.0932338
 height = 0.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2447e"]
-radius = 0.145
+radius = 0.176054
 height = 0.615
 
 [node name="Cat" type="CharacterBody3D"]
@@ -567,15 +567,17 @@ pixel_size = 0.025
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bfegm")
-animation = &"Stand_Idle"
+animation = &"Jump"
 autoplay = "Stand_Idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="BaseCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.180541, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.230146, 0)
 shape = SubResource("CapsuleShape3D_1ws1y")
 
 [node name="SlideCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00815576, 0.0800738, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00815576, 0.0930656, 0)
 shape = SubResource("CapsuleShape3D_uj45d")
 disabled = true
 
@@ -593,7 +595,7 @@ grow_horizontal = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296569, 0.195921, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingTrigger"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0198306, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0871516, 0)
 shape = SubResource("CapsuleShape3D_2447e")
 
 [node name="StateMachine" type="Node" parent="."]

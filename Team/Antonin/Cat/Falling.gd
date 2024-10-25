@@ -11,6 +11,10 @@ func update(delta: float) -> void:
 
 
 func physics_update(delta: float) -> void:
+	if player_cat.is_on_wall():
+		finished.emit(HIT)
+		return
+	
 	if player_cat.velocity.y >= 0.0 and player_cat.is_on_floor():
 		match go_to_state:
 			IDLE:

@@ -24,7 +24,7 @@ func physics_update(delta: float) -> void:
 		
 	player_cat.update_velocity_to_follow_path(player_cat.slide_speed, delta)
 		
-	if (slide_time < player_cat.max_slide_time and (Input.is_action_pressed("Slide") or slide_time < player_cat.min_slide_time) or player_cat.ceiling_trigger.has_overlapping_bodies()):
+	if (slide_time < player_cat.max_slide_time and (slide_time < player_cat.min_slide_time or Input.is_action_pressed("Slide") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) or player_cat.ceiling_trigger.has_overlapping_bodies()):
 		slide_time += delta
 	else:
 		finished.emit(RUNNING)
