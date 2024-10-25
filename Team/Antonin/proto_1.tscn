@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgak2ba4gd6od"]
+[gd_scene load_steps=9 format=3 uid="uid://dgak2ba4gd6od"]
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/Cat/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
@@ -8,13 +8,16 @@
 
 [sub_resource type="Curve3D" id="Curve3D_gldoj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.000150561, 2.66731e-05, 0.00396108, -2.35067, 0, 1.09824, 2.35067, 0, -1.09824, 14.3446, 2.66731e-05, -0.480812, 0.0495777, 2.68199e-07, 2.90508, -0.0495777, -2.68199e-07, -2.90508, 23.614, 2.69413e-05, -11.7438, 0, 0, 0, 0, 0, 0, 15.9172, 2.66731e-05, -24.3182),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.000150561, 2.66731e-05, 0.00396108, -2.35067, 0, 1.09824, 2.35067, 0, -1.09824, 14.3446, 2.66731e-05, -0.480812, 0.0495777, 2.68199e-07, 2.90508, -0.0495777, -2.68199e-07, -2.90508, 23.614, 2.69413e-05, -11.7438, 0.0304365, 2.68199e-07, 2.65523, -0.0304365, -2.68199e-07, -2.65523, 16.3914, 2.69413e-05, -24.2799, 0, 0, 0, 0, 0, 0, 20.8303, 2.69413e-05, -38.88),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 4
+point_count = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_mfoh8"]
 font_size = 40
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lodq0"]
+size = Vector3(1.6615, 3.44995, 0.904907)
 
 [node name="Proto1" type="Node3D"]
 script = ExtResource("1_s66ij")
@@ -45,7 +48,22 @@ text = "[ENTER] to start
 [ESCAPE] to quit"
 label_settings = SubResource("LabelSettings_mfoh8")
 
+[node name="FinishArea" type="Area3D" parent="Gameplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2179, 0.655818, -38.2808)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/FinishArea"]
+transform = Transform3D(0.937677, 0, -0.347509, 0, 1, 0, 0.347509, 0, 0.937677, -0.133877, 0.65979, -0.588772)
+shape = SubResource("BoxShape3D_lodq0")
+
+[node name="Timer" type="Timer" parent="Gameplay/FinishArea"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Level" type="Node" parent="."]
+
+[node name="Vendin-Machin_1" parent="Level" instance=ExtResource("5_gahg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15166, -0.318365, -0.787264)
 
 [node name="Plateform1" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 19.6491, -0.4, -5.93426)
@@ -58,16 +76,28 @@ transform = Transform3D(0.149746, 0, 0.610686, 0, 2.21064, 0, -0.177465, 0, 0.51
 [node name="Plateform3" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(-0.563987, 0, 0.825783, 0, 1, 0, -0.825783, 0, -0.563987, 20.2714, -0.4, -17.8229)
 
+[node name="Plateform7" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.32329, 0, 0.946299, 0, 1, 0, -0.946299, 0, 0.32329, 18.4182, -0.4, -31.5449)
+
 [node name="Plateform5" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(-0.275129, 0, 0.735302, 0, 1, 0, -0.402841, 0, -0.502191, 19.453, 0.532416, -19.0212)
 
 [node name="Plateform6" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(-0.221013, 0, 0.764535, 0, 1.00145, 0, -0.323604, 0, -0.522156, 17.5075, 1.33563, -21.8699)
 
-[node name="Vendin-Machin_1" parent="Level" instance=ExtResource("5_gahg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15166, -0.318365, -0.787264)
+[node name="Plateform8" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.0672987, 0, 0.877374, 0, 1.00145, 0, -0.199755, 0, 0.295593, 16.3625, 1.33563, -25.3102)
+
+[node name="Plateform10" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.0672987, 0, 0.877374, 0, 1.00145, 0, -0.199755, 0, 0.295593, 20.4634, 1.33563, -37.4824)
+
+[node name="Plateform9" parent="Level" instance=ExtResource("2_psw54")]
+transform = Transform3D(0.0623277, 0, 0.496139, 0, 7.49777, 0, -0.185, 0, 0.167153, 18.5481, 0.850763, -31.7975)
 
 [node name="Lights" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(0.796117, 0.467584, 0.38414, -0.574818, 0.385889, 0.721577, 0.189162, -0.79527, 0.575989, -3.82754, 2.79852, 3.57177)
+
+[connection signal="body_entered" from="Gameplay/FinishArea" to="." method="_on_finish_area_body_entered"]
+[connection signal="timeout" from="Gameplay/FinishArea/Timer" to="." method="_on_timer_timeout"]
