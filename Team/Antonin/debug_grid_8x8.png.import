@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyj2td6i5b85c"
 path.s3tc="res://.godot/imported/debug_grid_8x8.png-e4c443c990ffe04c146c674beefef722.s3tc.ctex"
+path.etc2="res://.godot/imported/debug_grid_8x8.png-e4c443c990ffe04c146c674beefef722.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Team/Antonin/debug_grid_8x8.png"
-dest_files=["res://.godot/imported/debug_grid_8x8.png-e4c443c990ffe04c146c674beefef722.s3tc.ctex"]
+dest_files=["res://.godot/imported/debug_grid_8x8.png-e4c443c990ffe04c146c674beefef722.s3tc.ctex", "res://.godot/imported/debug_grid_8x8.png-e4c443c990ffe04c146c674beefef722.etc2.ctex"]
 
 [params]
 
