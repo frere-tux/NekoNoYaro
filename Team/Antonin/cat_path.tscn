@@ -13,3 +13,5 @@ point_count = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0119905, -0.254897, -0.0225487)
 curve = SubResource("Curve3D_vue8t")
 script = ExtResource("1_ypm04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

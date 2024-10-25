@@ -1,7 +1,14 @@
-[gd_scene load_steps=72 format=3 uid="uid://cwx0ocumlauhb"]
+[gd_scene load_steps=80 format=3 uid="uid://cwx0ocumlauhb"]
 
 [ext_resource type="Texture2D" uid="uid://c84qbro40nery" path="res://Art/CH/Cats/Cat-01-Anims.png" id="1_6s7c6"]
-[ext_resource type="Script" path="res://Team/Antonin/cat.gd" id="1_ok6rl"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/cat.gd" id="1_ok6rl"]
+[ext_resource type="Script" path="res://Team/Antonin/StateMachine/StateMachine.gd" id="3_y2gxi"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Idle.gd" id="4_0kl0i"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Running.gd" id="5_vcyxq"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Jumping.gd" id="6_uv7fp"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Sliding.gd" id="7_hqqud"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Falling.gd" id="8_36w51"]
+[ext_resource type="Script" path="res://Team/Antonin/Cat/Hit.gd" id="9_sxs8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f12fl"]
 atlas = ExtResource("1_6s7c6")
@@ -539,12 +546,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ws1y"]
-radius = 0.18
+radius = 0.175
 height = 0.615
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uj45d"]
 radius = 0.08
 height = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2447e"]
+radius = 0.145
+height = 0.615
 
 [node name="Cat" type="CharacterBody3D"]
 collision_layer = 2
@@ -556,12 +567,11 @@ pixel_size = 0.025
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bfegm")
-animation = &"Run"
+animation = &"Stand_Idle"
 autoplay = "Stand_Idle"
-frame_progress = 0.588647
 
 [node name="BaseCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.196131, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.180541, 0)
 shape = SubResource("CapsuleShape3D_1ws1y")
 
 [node name="SlideCollision" type="CollisionShape3D" parent="."]
@@ -583,5 +593,26 @@ grow_horizontal = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296569, 0.195921, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingTrigger"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.000900209, 0)
-shape = SubResource("CapsuleShape3D_1ws1y")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0198306, 0)
+shape = SubResource("CapsuleShape3D_2447e")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_y2gxi")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_0kl0i")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("5_vcyxq")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("6_uv7fp")
+
+[node name="Sliding" type="Node" parent="StateMachine"]
+script = ExtResource("7_hqqud")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("8_36w51")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("9_sxs8b")

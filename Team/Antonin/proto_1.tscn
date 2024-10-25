@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgak2ba4gd6od"]
 
-[ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/cat.tscn" id="1_0fohe"]
+[ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/Cat/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="2_psw54"]
 [ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="4_x3jev"]
 [ext_resource type="PackedScene" uid="uid://c8fbbrr6tfyxd" path="res://Art/Environment/Props/Vendin-Machin_1.glb" id="5_gahg1"]
 
-[sub_resource type="Curve3D" id="Curve3D_6pvdl"]
+[sub_resource type="Curve3D" id="Curve3D_gldoj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.000881642, 3.31402e-05, 0.000422451, -1.57891, 0, 0.713018, 1.57891, 0, -0.713018, 14.6523, 3.31402e-05, -0.00940989, -0.00202179, 0, 1.51286, 0.00202179, 0, -1.51286, 24.4476, 3.31402e-05, -11.6758, 0, 0, 0, 0, 0, 0, 15.9679, 3.31402e-05, -24.2548),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.000150561, 2.66731e-05, 0.00396108, -2.35067, 0, 1.09824, 2.35067, 0, -1.09824, 14.3446, 2.66731e-05, -0.480812, 0.0495777, 2.68199e-07, 2.90508, -0.0495777, -2.68199e-07, -2.90508, 23.614, 2.69413e-05, -11.7438, 0, 0, 0, 0, 0, 0, 15.9172, 2.66731e-05, -24.3182),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -22,16 +22,16 @@ script = ExtResource("1_s66ij")
 [node name="Gameplay" type="Node" parent="."]
 
 [node name="CatPath" type="Path3D" parent="Gameplay"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.257601, 0)
-curve = SubResource("Curve3D_6pvdl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.250149, 0)
+curve = SubResource("Curve3D_gldoj")
 script = ExtResource("4_x3jev")
 
 [node name="Cat" parent="Gameplay" node_paths=PackedStringArray("cat_path") instance=ExtResource("1_0fohe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00917912, 0, 0.02244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017488, -0.288593, 0.022)
 cat_path = NodePath("../CatPath")
 
 [node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0.905, 0.515, 3.27)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0.905, 0.825, 3.22)
 
 [node name="Label" type="Label" parent="Gameplay"]
 offset_left = 20.0
