@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgak2ba4gd6od"]
+[gd_scene load_steps=10 format=3 uid="uid://dgak2ba4gd6od"]
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://Team/Antonin/Cat/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="2_psw54"]
 [ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="4_x3jev"]
-[ext_resource type="PackedScene" uid="uid://c8fbbrr6tfyxd" path="res://Art/Environment/Props/Vendin-Machin_1.glb" id="5_gahg1"]
+[ext_resource type="PackedScene" uid="uid://dl676mlk3ky34" path="res://Art/Environment/Props/Vending_Machine-01.gltf" id="5_xwuro"]
+[ext_resource type="PackedScene" uid="uid://ct5qdkg5oey55" path="res://Art/Environment/Props/Vending_Machine-02.gltf" id="6_3qtkt"]
 
 [sub_resource type="Curve3D" id="Curve3D_gldoj"]
 _data = {
@@ -62,9 +63,6 @@ one_shot = true
 
 [node name="Level" type="Node" parent="."]
 
-[node name="Vendin-Machin_1" parent="Level" instance=ExtResource("5_gahg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15166, -0.318365, -0.787264)
-
 [node name="Plateform1" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(0.644898, 0, 0.764269, 0, 1, 0, -0.764269, 0, 0.644898, 19.6491, -0.4, -5.93426)
 
@@ -93,6 +91,12 @@ transform = Transform3D(0.0672987, 0, 0.877374, 0, 1.00145, 0, -0.199755, 0, 0.2
 
 [node name="Plateform9" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(0.0623277, 0, 0.496139, 0, 7.49777, 0, -0.185, 0, 0.167153, 18.5481, 0.850763, -31.7975)
+
+[node name="Vending_Machine-012" parent="Level" instance=ExtResource("5_xwuro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15166, -0.318365, -0.787264)
+
+[node name="Vending_Machine-022" parent="Level" instance=ExtResource("6_3qtkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15166, -0.318365, -0.787264)
 
 [node name="Lights" type="Node" parent="."]
 
