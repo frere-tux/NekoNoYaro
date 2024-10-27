@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017488, -0.288593, 0.022
 cat_path = NodePath("../CatPath")
 
 [node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 0.905, 0.825, 3.22)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.905, 0.825, 3.41335)
 
 [node name="Label" type="Label" parent="Gameplay"]
 offset_left = 20.0
@@ -97,7 +97,7 @@ transform = Transform3D(0.0623277, 0, 0.496139, 0, 7.49777, 0, -0.185, 0, 0.1671
 [node name="Lights" type="Node" parent="."]
 
 [node name="DirectionalLight3D1" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(0.796117, 0.467584, 0.38414, -0.574818, 0.385889, 0.721577, 0.189162, -0.79527, 0.575989, -3.82754, 2.79852, 3.57177)
+transform = Transform3D(0.796117, 0.467584, 0.38414, -0.597514, 0.506912, 0.621303, 0.0957856, -0.724159, 0.682949, -3.82754, 2.79852, 3.57177)
 shadow_enabled = true
 
 [connection signal="body_entered" from="Gameplay/FinishArea" to="." method="_on_finish_area_body_entered"]

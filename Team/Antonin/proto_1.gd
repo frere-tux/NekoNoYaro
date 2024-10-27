@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var label = $Gameplay/Label
 @onready var timer = $Gameplay/FinishArea/Timer
+@onready var directional_light_3d_1 = $Lights/DirectionalLight3D1
+@onready var cat: CharacterBody3D = $Gameplay/Cat
+
+var initial_light_orientation: Vector3 
 
 
 func _input(event):
@@ -19,3 +23,9 @@ func _on_finish_area_body_entered(body):
 
 func _on_timer_timeout():
 	get_tree().reload_current_scene()
+	
+func _ready():
+	initial_light_orientation =directional_light_3d_1.rotation
+	
+func _process(delta):
+	directional_light_3d_1.rotation = cat.rotation + initial_light_orientation
