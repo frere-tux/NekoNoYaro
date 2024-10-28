@@ -1,7 +1,8 @@
-[gd_scene load_steps=80 format=3 uid="uid://cwx0ocumlauhb"]
+[gd_scene load_steps=81 format=3 uid="uid://cwx0ocumlauhb"]
 
 [ext_resource type="Texture2D" uid="uid://c84qbro40nery" path="res://Art/CH/Cats/Cat-01-Anims.png" id="1_6s7c6"]
 [ext_resource type="Script" path="res://Team/Antonin/Cat/cat.gd" id="1_ok6rl"]
+[ext_resource type="Material" uid="uid://cgqjiy60hugld" path="res://Team/Antonin/Cat/cat_mat.tres" id="3_5klqg"]
 [ext_resource type="Script" path="res://Team/Antonin/StateMachine/StateMachine.gd" id="3_y2gxi"]
 [ext_resource type="Script" path="res://Team/Antonin/Cat/Idle.gd" id="4_0kl0i"]
 [ext_resource type="Script" path="res://Team/Antonin/Cat/Running.gd" id="5_vcyxq"]
@@ -563,15 +564,14 @@ script = ExtResource("1_ok6rl")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501059, 0.399838, 0)
+material_override = ExtResource("3_5klqg")
 pixel_size = 0.025
 shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_bfegm")
-animation = &"Jump"
+animation = &"Stand_Idle"
 autoplay = "Stand_Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="BaseCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00251524, 0.230146, 0)

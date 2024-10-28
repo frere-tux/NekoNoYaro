@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cgqjiy60hugld"]
+
+[ext_resource type="Texture2D" uid="uid://c84qbro40nery" path="res://Art/CH/Cats/Cat-01-Anims.png" id="2_n2ijf"]
+[ext_resource type="Texture2D" uid="uid://doctnxohueeho" path="res://Art/CH/Cats/Cat-01-Anims-Normales.png" id="3_60sl4"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_n2ijf")
+normal_enabled = true
+normal_texture = ExtResource("3_60sl4")
+texture_filter = 0

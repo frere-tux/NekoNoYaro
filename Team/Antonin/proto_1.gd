@@ -27,7 +27,3 @@ func _on_timer_timeout():
 
 func _ready():
 	initial_light_orientation = directional_light_3d_1.rotation
-
-
-func _process(_delta):
-	directional_light_3d_1.rotation = cat.rotation + initial_light_orientation
