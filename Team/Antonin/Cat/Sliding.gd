@@ -14,7 +14,7 @@ func physics_update(_delta: float) -> void:
 	elif player_cat.is_on_wall():
 		finished.emit(HIT)
 		return
-	elif player_cat.cat_path.path_follow.progress_ratio == 1.0:
+	elif player_cat.cat_path.get_progress_ratio() == 1.0:
 		finished.emit(IDLE)
 		return
 		

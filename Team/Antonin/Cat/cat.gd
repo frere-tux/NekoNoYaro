@@ -1,4 +1,7 @@
-class_name Cat extends CharacterBody3D
+@tool
+
+class_name Cat 
+extends CharacterBody3D
 
 @onready var animated_sprite = $AnimatedSprite3D
 @onready var base_collision = $BaseCollision
@@ -7,7 +10,11 @@ class_name Cat extends CharacterBody3D
 @onready var state_machine = $StateMachine
 @onready var debug_label = $DebugLabel
 
-@export var cat_path: CatPath
+@export var cat_path: CatPath:
+	set(_cat_path):
+		cat_path = _cat_path
+		update_configuration_warnings()
+		
 @export var lost_path_distance: float = 1.5
 
 @export var speed: 	float = 5.0
@@ -27,9 +34,24 @@ class_name Cat extends CharacterBody3D
 @export var hit_jum_velocity: float = 2.0
 @export var hit_path_setback: float = 3.0
 
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = []
+	if not cat_path:
+		warnings.push_back('The cat need a CatPath (for now)')
+
+	return warnings
+
+
 func _ready():
-	position = cat_path.path_follow.position
-	floor_constant_speed = true
+	if Engine.is_editor_hint():		
+		set_process(false)
+		set_physics_process(false)
+		set_process_input(false)
+		set_process_unhandled_input(false)
+	else:	
+		position = cat_path.get_follow_position()
+		floor_constant_speed = true
 
 
 func _physics_process(_delta):
@@ -40,14 +62,16 @@ func _physics_process(_delta):
 
 	move_and_slide()
 	
-	rotation = cat_path.path_follow.rotation
+	rotation = cat_path.get_follow_rotation()
 	rotate_y(deg_to_rad(90))
 	
 	
-#func _process(_delta):
-	#debug_label.text = str(cat_path.path_follow.progress)
+func _process(_delta):
+	#debug_label.text = str(cat_path.get_progress()
 	#debug_label.text = state_machine.state.name
 	#debug_label.text = "Ceiling" if ceiling_trigger.has_overlapping_bodies() else "No ceiling"
+	#debug_label.text = str(Engine.get_frames_per_second())
+	return
 	
 		
 func enable_slide_collision(_enabled: bool):
@@ -56,12 +80,12 @@ func enable_slide_collision(_enabled: bool):
 	
 	
 func update_velocity_to_follow_path(_speed: float, _delta: float):
-	var direction = cat_path.path_follow.position - position
+	var direction = cat_path.get_follow_position() - position
 	direction.y = 0.0
 	var distanceToPath = direction.length()
 		
-	cat_path.path_follow.progress += _speed * _delta
-	direction = cat_path.path_follow.position - position
+	cat_path.increment_progress(_speed * _delta)
+	direction = cat_path.get_follow_position() - position
 	direction.y = 0.0
 	distanceToPath = direction.length();
 		
