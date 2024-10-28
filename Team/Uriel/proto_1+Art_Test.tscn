@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cedlf7nln710j"]
+[gd_scene load_steps=18 format=3 uid="uid://cedlf7nln710j"]
 
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_gy4o2"]
 [ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="2_vmaap"]
@@ -20,6 +20,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Environment" id="Environment_kg7lc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mfoh8"]
 font_size = 40
@@ -43,6 +45,7 @@ cat_path = NodePath("../CatPath")
 
 [node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.905, 0.825, 3.41335)
+environment = SubResource("Environment_kg7lc")
 
 [node name="Label" type="Label" parent="Gameplay"]
 offset_left = 20.0
@@ -247,6 +250,7 @@ transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 
 
 [node name="DirectionalLight3D1" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(0.796117, 0.467584, 0.38414, -0.597514, 0.506912, 0.621303, 0.0957856, -0.724159, 0.682949, -3.82754, 2.79852, 3.57177)
+light_color = Color(1, 0.929412, 0.858824, 1)
 shadow_enabled = true
 
 [node name="Air_Conditioner-032" parent="." instance=ExtResource("13_omt3x")]
