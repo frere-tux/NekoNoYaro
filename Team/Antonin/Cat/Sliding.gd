@@ -2,16 +2,12 @@ extends CatMotionState
 
 var slide_time: float = 0.0
 
-func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Jump"):
+func handle_input(_event: InputEvent) -> void:
+	if _event.is_action_pressed("Jump"):
 		finished.emit(JUMPING)
 
 
-func update(delta: float) -> void:
-	pass
-
-
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if player_cat.velocity.y < 0.0:
 		finished.emit(FALLING)
 		return
@@ -22,15 +18,15 @@ func physics_update(delta: float) -> void:
 		finished.emit(IDLE)
 		return
 		
-	player_cat.update_velocity_to_follow_path(player_cat.slide_speed, delta)
+	player_cat.update_velocity_to_follow_path(player_cat.slide_speed, _delta)
 		
 	if (slide_time < player_cat.max_slide_time and (slide_time < player_cat.min_slide_time or Input.is_action_pressed("Slide") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) or player_cat.ceiling_trigger.has_overlapping_bodies()):
-		slide_time += delta
+		slide_time += _delta
 	else:
 		finished.emit(RUNNING)
 
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	player_cat.animated_sprite.play("Slide")
 	
 	slide_time = 0.0

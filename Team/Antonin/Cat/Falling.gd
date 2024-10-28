@@ -2,15 +2,8 @@ extends CatMotionState
 
 var go_to_state: String
 
-func handle_input(event: InputEvent) -> void:
-	pass
 
-
-func update(delta: float) -> void:
-	pass
-
-
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if player_cat.is_on_wall():
 		finished.emit(HIT)
 		return
@@ -25,14 +18,10 @@ func physics_update(delta: float) -> void:
 				return
 	
 	if go_to_state != IDLE:
-		player_cat.update_velocity_to_follow_path(player_cat.speed, delta)
+		player_cat.update_velocity_to_follow_path(player_cat.speed, _delta)
 
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	player_cat.animated_sprite.play("Fall")
 	
-	go_to_state = data.get("GoTo", previous_state_path)
-
-
-func exit() -> void:
-	pass
+	go_to_state = _data.get("GoTo", _previous_state_path)

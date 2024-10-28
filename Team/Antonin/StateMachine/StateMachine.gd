@@ -20,24 +20,24 @@ func _ready() -> void:
 	state.enter("")
 	
 	
-func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
-	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
+func _transition_to_next_state(_target_state_path: String, _data: Dictionary = {}) -> void:
+	if not has_node(_target_state_path):
+		printerr(owner.name + ": Trying to transition to state " + _target_state_path + " but it does not exist.")
 		return
 
 	var previous_state_path := state.name
 	state.exit()
-	state = get_node(target_state_path)
-	state.enter(previous_state_path, data)
+	state = get_node(_target_state_path)
+	state.enter(previous_state_path, _data)
 	
 	
-func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
+func _unhandled_input(_event: InputEvent) -> void:
+	state.handle_input(_event)
 
 
-func _process(delta: float) -> void:
-	state.update(delta)
+func _process(_delta: float) -> void:
+	state.update(_delta)
 
 
-func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
+func _physics_process(_delta: float) -> void:
+	state.physics_update(_delta)

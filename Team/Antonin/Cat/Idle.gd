@@ -1,20 +1,16 @@
 extends CatMotionState
 
 
-func handle_input(event: InputEvent) -> void:
-	var screen_event_state = compute_state_from_mouse_motion(event)
+func handle_input(_event: InputEvent) -> void:
+	var screen_event_state = compute_state_from_mouse_motion(_event)
 	
-	if event.is_action_pressed("Jump") or screen_event_state == JUMPING:
+	if _event.is_action_pressed("Jump") or screen_event_state == JUMPING:
 		finished.emit(JUMPING)
-	elif event.is_action_pressed("Confirm"):
+	elif _event.is_action_pressed("Confirm"):
 		finished.emit(RUNNING)
 
 
-func update(delta: float) -> void:
-	pass
-
-
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if player_cat.velocity.y < 0.0:
 		finished.emit(FALLING)
 		return
@@ -23,11 +19,7 @@ func physics_update(delta: float) -> void:
 		return
 
 
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(_previous_state_path: String, _data := {}) -> void:
 	player_cat.animated_sprite.play("Stand_Idle")
 	
 	player_cat.velocity = Vector3.ZERO
-
-
-func exit() -> void:
-	pass

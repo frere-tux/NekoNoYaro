@@ -32,11 +32,11 @@ func _ready():
 	floor_constant_speed = true
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 		# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * _delta
 
 	move_and_slide()
 	
@@ -44,24 +44,23 @@ func _physics_process(delta):
 	rotate_y(deg_to_rad(90))
 	
 	
-func _process(delta):
+#func _process(_delta):
 	#debug_label.text = str(cat_path.path_follow.progress)
 	#debug_label.text = state_machine.state.name
 	#debug_label.text = "Ceiling" if ceiling_trigger.has_overlapping_bodies() else "No ceiling"
-	pass
 	
 		
-func enable_slide_collision(enabled: bool):
-	base_collision.disabled = enabled
-	slide_collision.disabled = not enabled
+func enable_slide_collision(_enabled: bool):
+	base_collision.disabled = _enabled
+	slide_collision.disabled = not _enabled
 	
 	
-func update_velocity_to_follow_path(speed: float, delta: float):
+func update_velocity_to_follow_path(_speed: float, _delta: float):
 	var direction = cat_path.path_follow.position - position
 	direction.y = 0.0
 	var distanceToPath = direction.length()
 		
-	cat_path.path_follow.progress += speed * delta
+	cat_path.path_follow.progress += _speed * _delta
 	direction = cat_path.path_follow.position - position
 	direction.y = 0.0
 	distanceToPath = direction.length();
@@ -70,8 +69,8 @@ func update_velocity_to_follow_path(speed: float, delta: float):
 	direction = direction.normalized()
 		
 	if direction:
-		velocity.x = direction.x * maxf(speed, distanceToPath)
-		velocity.z = direction.z * maxf(speed, distanceToPath)
+		velocity.x = direction.x * maxf(_speed, distanceToPath)
+		velocity.z = direction.z * maxf(_speed, distanceToPath)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, _speed)
+		velocity.z = move_toward(velocity.z, 0, _speed)
