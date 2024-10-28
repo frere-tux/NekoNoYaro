@@ -2,10 +2,6 @@ extends CatMotionState
 
 var path_progress_on_hit: float = 0.0
 
-func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Jump"):
-		finished.emit(JUMPING)
-
 
 func update(delta: float) -> void:
 	pass
