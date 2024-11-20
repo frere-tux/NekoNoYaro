@@ -3,7 +3,7 @@ extends CatMotionState
 var slide_time: float = 0.0
 
 func handle_input(_event: InputEvent) -> void:
-	if _event.is_action_pressed("Jump"):
+	if player_cat.can_jump and _event.is_action_pressed("Jump"):
 		finished.emit(JUMPING)
 
 

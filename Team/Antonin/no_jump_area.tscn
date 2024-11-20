@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceu8bc30umlxu"]
+
+[ext_resource type="Script" path="res://Team/Antonin/no_jump_area.gd" id="1_rwc5o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6kw6"]
+resource_local_to_scene = true
+
+[node name="NoJumpArea" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07984, 0.193383, 0)
+collision_mask = 2
+script = ExtResource("1_rwc5o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q6kw6")
+
+[connection signal="body_entered" from="." to="." method="_on_cat_entered"]
+[connection signal="body_exited" from="." to="." method="_on_cat_exited"]

@@ -1,14 +1,12 @@
 class_name CatPath extends Path3D
 
-var path_follow: PathFollow3D
+@onready var path_follow = $PathFollow3D
+@onready var enter_trigger = $Area3D
+
 @export var debug_enabled: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	path_follow = PathFollow3D.new()
-	add_child(path_follow)
-	path_follow.loop = false
 	
+func _ready():
 	if debug_enabled:
 		var debug_mesh = MeshInstance3D.new()
 		debug_mesh.mesh = SphereMesh.new()
@@ -17,11 +15,11 @@ func _ready():
 		
 
 func get_follow_position() -> Vector3:
-	return path_follow.position
+	return path_follow.global_position
 	
 	
 func get_follow_rotation() -> Vector3:
-	return path_follow.rotation
+	return path_follow.global_rotation
 	
 	
 func get_progress() -> float:
@@ -38,3 +36,9 @@ func increment_progress(_value:float):
 	
 func decrement_progress(_value:float): 
 	path_follow.progress -= _value
+
+
+func _on_path_trigger_entered(_body):
+	var cat = _body as Cat
+	if cat:
+		cat.enter_new_path(self)

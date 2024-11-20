@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjlyj435yo6js"]
+
+[ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="1_wwc04"]
+[ext_resource type="PackedScene" uid="uid://d1olmv3w78rut" path="res://Team/Antonin/cat_path.tscn" id="2_dx4xk"]
+
+[sub_resource type="Curve3D" id="Curve3D_ggf7b"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.241379, 0, -0.00142277, -1.01338, 4.31538e-05, 0.436516, 1.01338, -4.31538e-05, -0.436516, 7.99101, 0, -0.0883734, 0, 0, 0, 1.01338, -4.31538e-05, -0.436516, 14.294, 0, -5.32414),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="Level1" type="Node3D"]
+
+[node name="Plateform10" parent="." instance=ExtResource("1_wwc04")]
+transform = Transform3D(0.554557, 0, 0, 0, 1.00145, 0, 0, 0, 0.92583, 3.7851, 0, 0)
+
+[node name="Plateform12" parent="." instance=ExtResource("1_wwc04")]
+transform = Transform3D(0.218016, 0, 0, 0, 1.00145, 0, 0, 0, 0.85251, 5.10412, 0.992644, 0)
+
+[node name="Plateform11" parent="." instance=ExtResource("1_wwc04")]
+transform = Transform3D(0.419531, 0, 0.60547, 0, 1.00145, 0, -0.362666, 0, 0.700405, 11.2, 0, -2.76578)
+
+[node name="Plateform13" parent="." instance=ExtResource("1_wwc04")]
+transform = Transform3D(0.185035, 0, 0.60547, 0, 3.99558, 0, -0.159955, 0, 0.700405, 10.357, 0.806176, -2.03704)
+
+[node name="CatPath" parent="." instance=ExtResource("2_dx4xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142535, 0)
+curve = SubResource("Curve3D_ggf7b")
+
+[node name="PathFollow3D" parent="CatPath" index="0"]
+transform = Transform3D(0.0105613, 0, -0.999935, 0, 1, 0, 0.999935, 0, 0.0105613, -0.241379, 0, -0.00142277)
+
+[node name="CollisionShape3D" parent="CatPath/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0811768, 0.475342, -0.0698242)
+
+[editable path="CatPath"]

@@ -1,17 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://os0q3hm6wac"]
+[gd_scene load_steps=4 format=3 uid="uid://d1olmv3w78rut"]
 
-[ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="1_ypm04"]
+[ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="1_dkdqf"]
 
-[sub_resource type="Curve3D" id="Curve3D_vue8t"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.000134766, 0, 0.00014846, -0.929718, 0, 0.448829, 0.929718, 0, -0.448829, 14.6228, 1.53184e-05, -0.0744741),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+[sub_resource type="Curve3D" id="Curve3D_q4fco"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7cjw"]
+size = Vector3(0.983154, 0.799927, 1.92676)
 
 [node name="CatPath" type="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0119905, -0.254897, -0.0225487)
-curve = SubResource("Curve3D_vue8t")
-script = ExtResource("1_ypm04")
+curve = SubResource("Curve3D_q4fco")
+script = ExtResource("1_dkdqf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.0105613, 0, -0.999944, 0, 1, 0, 0.999944, 0, 0.0105613, -0.241379, 0, -0.00142277)
+loop = false
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_f7cjw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_path_trigger_entered"]

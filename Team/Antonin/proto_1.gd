@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var label = $Gameplay/Label
-@onready var timer = $Gameplay/FinishArea/Timer
+@onready var timer = $Gameplay/ResetTimer
 @onready var directional_light_3d_1 = $Lights/DirectionalLight3D1
 @onready var cat: CharacterBody3D = $Gameplay/Cat
 

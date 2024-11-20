@@ -15,17 +15,19 @@ extends CharacterBody3D
 		cat_path = _cat_path
 		update_configuration_warnings()
 		
-@export var lost_path_distance: float = 1.5
+@export var lost_path_distance: float = 0.1
 
 @export var speed: 	float = 5.0
 
 
 # Jump
+@export var can_jump: 					bool = true
 @export var max_jump_time: 				float = 0.6
 @export var initial_jump_velocity: 		float = 3.5
 @export var continuous_jump_velocity: 	float = 5.0
 
 # Slide
+@export var can_slide: 		bool = true
 @export var slide_speed:	float = 5.0
 @export var min_slide_time:	float = 0.5
 @export var max_slide_time:	float = 1.0
@@ -67,7 +69,7 @@ func _physics_process(_delta):
 	
 	
 func _process(_delta):
-	#debug_label.text = str(cat_path.get_progress()
+	#debug_label.text = str(cat_path.get_progress())
 	#debug_label.text = state_machine.state.name
 	#debug_label.text = "Ceiling" if ceiling_trigger.has_overlapping_bodies() else "No ceiling"
 	#debug_label.text = str(Engine.get_frames_per_second())
@@ -82,19 +84,26 @@ func enable_slide_collision(_enabled: bool):
 func update_velocity_to_follow_path(_speed: float, _delta: float):
 	var direction = cat_path.get_follow_position() - position
 	direction.y = 0.0
-	var distanceToPath = direction.length()
+	var distance_to_path = direction.length()
+	
+	if distance_to_path	< lost_path_distance:
+		cat_path.increment_progress(_speed * _delta)
 		
-	cat_path.increment_progress(_speed * _delta)
 	direction = cat_path.get_follow_position() - position
 	direction.y = 0.0
-	distanceToPath = direction.length();
+	distance_to_path = direction.length();
 		
 			
 	direction = direction.normalized()
 		
 	if direction:
-		velocity.x = direction.x * maxf(_speed, distanceToPath)
-		velocity.z = direction.z * maxf(_speed, distanceToPath)
+		velocity.x = direction.x * maxf(_speed, distance_to_path)
+		velocity.z = direction.z * maxf(_speed, distance_to_path)
 	else:
 		velocity.x = move_toward(velocity.x, 0, _speed)
 		velocity.z = move_toward(velocity.z, 0, _speed)
+		
+		
+func enter_new_path(_path: CatPath):
+	cat_path = _path
+	cat_path.path_follow.progress = 0.0

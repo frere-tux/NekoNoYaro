@@ -561,6 +561,9 @@ height = 0.615
 [node name="Cat" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_ok6rl")
+lost_path_distance = 1.5
+can_jump = null
+can_slide = null
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501059, 0.399838, 0)
