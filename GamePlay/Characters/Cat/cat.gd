@@ -8,7 +8,6 @@ extends CharacterBody3D
 @onready var slide_collision = $SlideCollision
 @onready var ceiling_trigger = $CeilingTrigger
 @onready var state_machine = $StateMachine
-@onready var debug_label = $DebugLabel
 
 @export var cat_path: CatPath:
 	set(_cat_path):
@@ -54,6 +53,12 @@ func _ready():
 	else:	
 		position = cat_path.get_follow_position()
 		floor_constant_speed = true
+		DebugManager.add_object_to_display(self, "ToggleDebugCat")
+		
+		
+func _exit_tree():
+	if not Engine.is_editor_hint():
+		DebugManager.remove_object_to_display(self)
 
 
 func _physics_process(_delta):
@@ -69,10 +74,6 @@ func _physics_process(_delta):
 	
 	
 func _process(_delta):
-	#debug_label.text = str(cat_path.get_progress())
-	#debug_label.text = state_machine.state.name
-	#debug_label.text = "Ceiling" if ceiling_trigger.has_overlapping_bodies() else "No ceiling"
-	#debug_label.text = str(Engine.get_frames_per_second())
 	return
 	
 		
@@ -107,3 +108,12 @@ func update_velocity_to_follow_path(_speed: float, _delta: float):
 func enter_new_path(_path: CatPath):
 	cat_path = _path
 	cat_path.path_follow.progress = 0.0
+	
+func get_debug_text() -> String:
+	var debug_text = "[b][u]CAT[/u][/b]\n"
+	debug_text += "Cat Motion State: %s\n" % state_machine.state.name
+	debug_text += "Cat Path progress: %.2f (ratio: %.2f)\n" % [cat_path.get_progress(), cat_path.get_progress_ratio()]
+	debug_text += "[color=coral]Ceiling[/color]\n" if ceiling_trigger.has_overlapping_bodies() else "No ceiling\n"
+	return debug_text
+	
+	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://cedlf7nln710j"]
 
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_gy4o2"]
-[ext_resource type="Script" path="res://Team/Antonin/cat_path.gd" id="2_vmaap"]
+[ext_resource type="Script" path="res://GamePlay/GPE/CatPath/cat_path.gd" id="2_vmaap"]
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://GamePlay/Characters/Cat/cat.tscn" id="3_ob7m8"]
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="5_1o3j5"]
 [ext_resource type="PackedScene" uid="uid://ck824kc8p3ukm" path="res://Art/Environment/Structures/Wall-3x3-01.gltf" id="6_g7stj"]

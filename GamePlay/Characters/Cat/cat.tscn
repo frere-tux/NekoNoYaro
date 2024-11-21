@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c84qbro40nery" path="res://Art/CH/Cats/Cat-01-Anims.png" id="1_6s7c6"]
 [ext_resource type="Script" path="res://GamePlay/Characters/Cat/cat.gd" id="1_ok6rl"]
 [ext_resource type="Material" uid="uid://cgqjiy60hugld" path="res://GamePlay/Characters/Cat/cat_mat.tres" id="3_5klqg"]
-[ext_resource type="Script" path="res://Team/Antonin/StateMachine/StateMachine.gd" id="3_y2gxi"]
+[ext_resource type="Script" path="res://Tech/StateMachine/StateMachine.gd" id="3_y2gxi"]
 [ext_resource type="Script" path="res://GamePlay/Characters/Cat/Idle.gd" id="4_0kl0i"]
 [ext_resource type="Script" path="res://GamePlay/Characters/Cat/Running.gd" id="5_vcyxq"]
 [ext_resource type="Script" path="res://GamePlay/Characters/Cat/Jumping.gd" id="6_uv7fp"]
@@ -562,8 +562,6 @@ height = 0.615
 collision_layer = 2
 script = ExtResource("1_ok6rl")
 lost_path_distance = 1.5
-can_jump = null
-can_slide = null
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501059, 0.399838, 0)
@@ -584,16 +582,6 @@ shape = SubResource("CapsuleShape3D_1ws1y")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00815576, 0.0930656, 0)
 shape = SubResource("CapsuleShape3D_uj45d")
 disabled = true
-
-[node name="DebugLabel" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -346.0
-offset_top = 15.0
-offset_right = -25.0
-offset_bottom = 62.0
-grow_horizontal = 0
 
 [node name="CeilingTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00296569, 0.195921, 0)

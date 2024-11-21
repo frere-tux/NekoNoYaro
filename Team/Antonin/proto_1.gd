@@ -5,7 +5,13 @@ extends Node3D
 @onready var directional_light_3d_1 = $Lights/DirectionalLight3D1
 @onready var cat: CharacterBody3D = $Gameplay/Cat
 
-var initial_light_orientation: Vector3 
+
+func _ready():
+	DebugManager.add_object_to_display(self, "ToggleDebugScene")
+	
+
+func _exit_tree():
+	DebugManager.remove_object_to_display(self)
 
 
 func _input(_event):
@@ -23,7 +29,11 @@ func _on_finish_area_body_entered(_body):
 
 func _on_timer_timeout():
 	get_tree().reload_current_scene()
+	
 
-
-func _ready():
-	initial_light_orientation = directional_light_3d_1.rotation
+func get_debug_text() -> String:
+	var debug_text = "[b][u]PROTO 1[/u][/b]\n"
+	debug_text += "FPS: %.2f\n" % Engine.get_frames_per_second()
+	if timer.time_left > 0.0:
+		debug_text +="[color=coral]Reset in %.2f seconds[/color]\n" % timer.time_left
+	return debug_text

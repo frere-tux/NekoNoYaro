@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://GamePlay/Characters/Cat/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
-[ext_resource type="PackedScene" uid="uid://d1olmv3w78rut" path="res://Team/Antonin/cat_path.tscn" id="2_dw737"]
+[ext_resource type="PackedScene" uid="uid://d1olmv3w78rut" path="res://GamePlay/GPE/CatPath/cat_path.tscn" id="2_dw737"]
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="2_psw54"]
 [ext_resource type="PackedScene" uid="uid://ceu8bc30umlxu" path="res://Team/Antonin/no_jump_area.tscn" id="4_6hw7q"]
 [ext_resource type="PackedScene" uid="uid://dl676mlk3ky34" path="res://Art/Environment/Props/Vending_Machine-01.gltf" id="5_xwuro"]
@@ -26,7 +26,7 @@ size = Vector3(1.6615, 1.34802, 0.904907)
 [sub_resource type="Curve3D" id="Curve3D_ggf7b"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.241379, 0, -0.00142277, -1.01338, 4.31538e-05, 0.436516, 1.01338, -4.31538e-05, -0.436516, 7.99101, 0, -0.0883734, 0, 0, 0, 0, 0, 0, 14.294, 0, -5.32414),
+"points": PackedVector3Array(-0.644448, -1.33514e-05, -0.121607, 0.644448, 1.33514e-05, 0.121607, -0.24101, 0, 0.03355, -1.01338, 4.31538e-05, 0.436516, 1.01338, -4.31538e-05, -0.436516, 7.99101, 0, -0.0883734, 0, 0, 0, 0, 0, 0, 14.294, 0, -5.32414),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -42,7 +42,7 @@ point_count = 3
 [sub_resource type="Curve3D" id="Curve3D_o3ldb"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector3Array(-0.775319, 0, -0.64176, 0.775319, 0, 0.64176, -0.345611, 3.016e-05, 0.0118561, -1.01338, 4.31538e-05, 0.436516, 1.01338, -4.31538e-05, -0.436516, 7.99101, 0, -0.0883734, 0, 0, 0, 0, 0, 0, 14.294, 0, -5.32414),
+"points": PackedVector3Array(-0.775319, 0, -0.64176, 0.775319, 0, 0.64176, -0.383113, 6.27041e-05, 0.0268269, -1.01338, 4.31538e-05, 0.436516, 1.01338, -4.31538e-05, -0.436516, 7.99101, 0, -0.0883734, 0, 0, 0, 0, 0, 0, 14.294, 0, -5.32414),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -60,8 +60,6 @@ curve = SubResource("Curve3D_dx4rr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017488, -0.288593, 0.022)
 cat_path = NodePath("../CatPath")
 lost_path_distance = 0.1
-can_jump = true
-can_slide = true
 
 [node name="Camera3D" type="Camera3D" parent="Gameplay/Cat"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.905, 0.825, 3.41335)
@@ -99,7 +97,7 @@ transform = Transform3D(-0.592238, 0, 0.805763, 0, 1, 0, -0.805763, 0, -0.592238
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/FinishArea3"]
-transform = Transform3D(0.937677, 0, -0.347509, 0, 1, 0, 0.347509, 0, 0.937677, -0.133877, -0.391174, -0.588772)
+transform = Transform3D(0.937677, 0, -0.347509, 0, 1, 0, 0.347509, 0, 0.937677, -0.133877, 0.643757, -0.588772)
 shape = SubResource("BoxShape3D_lodq0")
 
 [node name="ResetTimer" type="Timer" parent="Gameplay"]
@@ -129,13 +127,13 @@ transform = Transform3D(0.32329, 0, 0.946299, 0, 1, 0, -0.946299, 0, 0.32329, 18
 transform = Transform3D(0.398085, 0, 0.208935, 0, 1, 0, -0.0850513, 0, 0.977929, 23.5973, -0.4, -39.353)
 
 [node name="Plateform5" parent="Level" instance=ExtResource("2_psw54")]
-transform = Transform3D(-0.275129, 0, 0.735302, 0, 1, 0, -0.402841, 0, -0.502191, 19.453, 0.532416, -19.0212)
+transform = Transform3D(-0.156756, 0, 0.735302, 0, 1, 0, -0.22952, 0, -0.502191, 18.4748, 1.52, -20.4561)
 
 [node name="Plateform6" parent="Level" instance=ExtResource("2_psw54")]
-transform = Transform3D(-0.221013, 0, 0.764535, 0, 1.00145, 0, -0.323604, 0, -0.522156, 17.5075, 1.5366, -21.8699)
+transform = Transform3D(-0.367909, 0, 0.764535, 0, 1.00145, 0, -0.538687, 0, -0.522156, 18.7285, 0.53, -20.0822)
 
 [node name="Plateform8" parent="Level" instance=ExtResource("2_psw54")]
-transform = Transform3D(0.0672987, 0, 0.877374, 0, 1.00145, 0, -0.199755, 0, 0.295593, 16.3625, 1.5366, -25.3102)
+transform = Transform3D(0.0868845, 0, 0.877374, 0, 1.00145, 0, -0.257889, 0, 0.295593, 16.5197, 0.53, -25.7767)
 
 [node name="Plateform9" parent="Level" instance=ExtResource("2_psw54")]
 transform = Transform3D(0.0623277, 0, 0.496139, 0, 7.49777, 0, -0.185, 0, 0.167153, 18.5481, 0.850763, -31.7975)
@@ -153,7 +151,7 @@ transform = Transform3D(0.306875, 0, 0.95175, 0, 1, 0, -0.95175, 0, 0.306875, 20
 curve = SubResource("Curve3D_ggf7b")
 
 [node name="PathFollow3D" parent="Level/Level1/CatPath" index="0"]
-transform = Transform3D(0.0105612, 0, -0.999934, 0, 1, 0, 0.999934, 0, 0.0105612, -0.241379, 0, -0.00142277)
+transform = Transform3D(-0.185423, -2.00052e-05, -0.982638, 2.72843e-12, 1, -2.03579e-05, 0.982638, -3.77498e-06, -0.185423, -0.24101, 0, 0.03355)
 
 [node name="Level2" parent="Level" instance=ExtResource("7_iivdi")]
 transform = Transform3D(0.978155, 0, 0.207877, 0, 1, 0, -0.207877, 0, 0.978155, 26.314, -0.404228, -39.902)
@@ -163,10 +161,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60889e-07, 0.18393, 0.00995
 curve = SubResource("Curve3D_17vec")
 
 [node name="PathFollow3D" parent="Level/Level2/CatPath" index="0"]
-transform = Transform3D(-0.0402872, 0, -0.999162, 0, 1, 0, 0.999162, 0, -0.0402872, -0.238739, -3.86685e-05, -0.017662)
+transform = Transform3D(-0.040287, 0, -0.999162, 0, 1, 0, 0.999162, 0, -0.040287, -0.238739, -3.86685e-05, -0.017662)
 
 [node name="Level3" parent="Level" instance=ExtResource("7_iivdi")]
-transform = Transform3D(-0.902495, 0, 0.4307, 0, 1, 0, -0.4307, 0, -0.902495, 16.8176, 0.531263, -22.3475)
+transform = Transform3D(-0.902495, 0, 0.4307, 0, 1, 0, -0.4307, 0, -0.902495, 16.8176, 1.52, -22.3475)
 
 [node name="CollisionShape3D" parent="Level/Level3/Plateform12" index="0"]
 disabled = true
@@ -178,7 +176,7 @@ visible = false
 curve = SubResource("Curve3D_o3ldb")
 
 [node name="PathFollow3D" parent="Level/Level3/CatPath" index="0"]
-transform = Transform3D(-0.637627, 0, -0.770326, 0, 1, 0, 0.770326, 0, -0.637627, -0.345611, 3.016e-05, 0.0118561)
+transform = Transform3D(-0.637627, 0, -0.770326, 0, 1, 0, 0.770326, 0, -0.637627, -0.383113, 6.27041e-05, 0.0268269)
 
 [node name="CollisionShape3D" parent="Level/Level3/CatPath/Area3D" index="0"]
 transform = Transform3D(1, 0, -1.78814e-07, 0, 1, 0, 1.78814e-07, 0, 1, -0.0811777, 0.345398, -0.0698204)

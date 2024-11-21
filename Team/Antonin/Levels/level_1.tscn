@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjlyj435yo6js"]
 
 [ext_resource type="PackedScene" uid="uid://buyd11vae3fg2" path="res://Team/Antonin/plateform.tscn" id="1_wwc04"]
-[ext_resource type="PackedScene" uid="uid://d1olmv3w78rut" path="res://Team/Antonin/cat_path.tscn" id="2_dx4xk"]
+[ext_resource type="PackedScene" uid="uid://d1olmv3w78rut" path="res://GamePlay/GPE/CatPath/cat_path.tscn" id="2_dx4xk"]
 
 [sub_resource type="Curve3D" id="Curve3D_ggf7b"]
 resource_local_to_scene = true
@@ -30,7 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142535, 0)
 curve = SubResource("Curve3D_ggf7b")
 
 [node name="PathFollow3D" parent="CatPath" index="0"]
-transform = Transform3D(0.0105613, 0, -0.999935, 0, 1, 0, 0.999935, 0, 0.0105613, -0.241379, 0, -0.00142277)
+transform = Transform3D(0.0105612, 0, -0.999935, 0, 1, 0, 0.999935, 0, 0.0105612, -0.241379, 0, -0.00142277)
 
 [node name="CollisionShape3D" parent="CatPath/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0811768, 0.475342, -0.0698242)

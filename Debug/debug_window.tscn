@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://0axm6wo88vx0"]
+
+[ext_resource type="Theme" uid="uid://bfgs3nl31be0h" path="res://Debug/debug_label_theme.tres" id="1_brcq7"]
+
+[node name="DebugWindow" type="RichTextLabel"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_brcq7")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
