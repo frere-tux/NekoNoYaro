@@ -15,7 +15,7 @@ func physics_update(_delta: float) -> void:
 	if previous_state != IDLE:	
 		player_cat.update_velocity_to_follow_path(player_cat.speed, _delta)
 	
-	if jump_time < player_cat.max_jump_time and (Input.is_action_pressed("Jump")) or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if jump_time < player_cat.max_jump_time and (Input.is_action_pressed("Jump")) or player_cat.is_screen_touch:
 		player_cat.velocity.y += player_cat.continuous_jump_velocity * _delta
 		jump_time+= _delta
 	elif player_cat.velocity.y < 0.0:

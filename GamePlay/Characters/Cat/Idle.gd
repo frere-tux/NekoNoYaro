@@ -2,11 +2,11 @@ extends CatMotionState
 
 
 func handle_input(_event: InputEvent) -> void:
-	var screen_event_state = compute_state_from_mouse_motion(_event)
+	var screen_event_state = compute_state_from_screen_event(_event)
 	
 	if player_cat.can_jump and (_event.is_action_pressed("Jump") or screen_event_state == JUMPING):
 		finished.emit(JUMPING)
-	elif _event.is_action_pressed("Confirm"):
+	elif _event.is_action_pressed("Confirm") or _event is InputEventScreenTouch:
 		finished.emit(RUNNING)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgak2ba4gd6od"]
+[gd_scene load_steps=17 format=3 uid="uid://dgak2ba4gd6od"]
 
 [ext_resource type="PackedScene" uid="uid://cwx0ocumlauhb" path="res://GamePlay/Characters/Cat/cat.tscn" id="1_0fohe"]
 [ext_resource type="Script" path="res://Team/Antonin/proto_1.gd" id="1_s66ij"]
@@ -38,6 +38,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8uq0"]
+resource_local_to_scene = true
+size = Vector3(16.5, 0.21, 2.189)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jefrk"]
+resource_local_to_scene = true
 
 [sub_resource type="Curve3D" id="Curve3D_o3ldb"]
 resource_local_to_scene = true
@@ -153,6 +160,9 @@ curve = SubResource("Curve3D_ggf7b")
 [node name="PathFollow3D" parent="Level/Level1/CatPath" index="0"]
 transform = Transform3D(-0.185423, -2.00052e-05, -0.982638, 2.72843e-12, 1, -2.03579e-05, 0.982638, -3.77498e-06, -0.185423, -0.24101, 0, 0.03355)
 
+[node name="EnterTrigger" parent="Level/Level1/CatPath" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.336174, 0)
+
 [node name="Level2" parent="Level" instance=ExtResource("7_iivdi")]
 transform = Transform3D(0.978155, 0, 0.207877, 0, 1, 0, -0.207877, 0, 0.978155, 26.314, -0.404228, -39.902)
 
@@ -163,14 +173,19 @@ curve = SubResource("Curve3D_17vec")
 [node name="PathFollow3D" parent="Level/Level2/CatPath" index="0"]
 transform = Transform3D(-0.040287, 0, -0.999162, 0, 1, 0, 0.999162, 0, -0.040287, -0.238739, -3.86685e-05, -0.017662)
 
+[node name="EnterTrigger" parent="Level/Level2/CatPath" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37738, 0)
+
 [node name="Level3" parent="Level" instance=ExtResource("7_iivdi")]
 transform = Transform3D(-0.902495, 0, 0.4307, 0, 1, 0, -0.4307, 0, -0.902495, 16.8176, 1.52, -22.3475)
 
 [node name="CollisionShape3D" parent="Level/Level3/Plateform12" index="0"]
+shape = SubResource("BoxShape3D_k8uq0")
 disabled = true
 
 [node name="MeshInstance3D" parent="Level/Level3/Plateform12" index="1"]
 visible = false
+mesh = SubResource("BoxMesh_jefrk")
 
 [node name="CatPath" parent="Level/Level3" index="4"]
 curve = SubResource("Curve3D_o3ldb")
@@ -178,8 +193,8 @@ curve = SubResource("Curve3D_o3ldb")
 [node name="PathFollow3D" parent="Level/Level3/CatPath" index="0"]
 transform = Transform3D(-0.637627, 0, -0.770326, 0, 1, 0, 0.770326, 0, -0.637627, -0.383113, 6.27041e-05, 0.0268269)
 
-[node name="CollisionShape3D" parent="Level/Level3/CatPath/Area3D" index="0"]
-transform = Transform3D(1, 0, -1.78814e-07, 0, 1, 0, 1.78814e-07, 0, 1, -0.0811777, 0.345398, -0.0698204)
+[node name="EnterTrigger" parent="Level/Level3/CatPath" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380957, 0)
 
 [node name="Lights" type="Node" parent="."]
 

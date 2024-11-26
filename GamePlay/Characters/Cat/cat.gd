@@ -35,6 +35,9 @@ extends CharacterBody3D
 @export var hit_jum_velocity: float = 2.0
 @export var hit_path_setback: float = 3.0
 
+# Touch Screen
+var is_screen_touch: bool = false
+
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
@@ -54,6 +57,15 @@ func _ready():
 		position = cat_path.get_follow_position()
 		floor_constant_speed = true
 		DebugManager.add_object_to_display(self, "ToggleDebugCat")
+		
+		
+func _input(event):
+	var touch_event := event as InputEventScreenTouch
+	if touch_event:
+		if touch_event.pressed:
+			is_screen_touch = true
+		else:
+			is_screen_touch = false
 		
 		
 func _exit_tree():

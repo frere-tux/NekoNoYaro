@@ -3,9 +3,11 @@
 [ext_resource type="Material" uid="uid://cogi81ciqr2qv" path="res://Debug/mat_debug_grid.tres" id="1_ju7av"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7s4er"]
+resource_local_to_scene = true
 size = Vector3(16.5, 0.21, 2.189)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1esgy"]
+resource_local_to_scene = true
 
 [node name="Plateform" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8276, -0.4, 0)

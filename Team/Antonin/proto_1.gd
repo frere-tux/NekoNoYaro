@@ -15,7 +15,7 @@ func _exit_tree():
 
 
 func _input(_event):
-	if label.visible and _event.is_action_pressed("Confirm"):
+	if label.visible and (_event.is_action_pressed("Confirm") or _event is InputEventScreenTouch):
 		label.visible = false
 	elif _event.is_action_pressed("Reset"):
 		get_tree().reload_current_scene()

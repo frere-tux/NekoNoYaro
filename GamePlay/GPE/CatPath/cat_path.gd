@@ -1,7 +1,7 @@
 class_name CatPath extends Path3D
 
 @onready var path_follow = $PathFollow3D
-@onready var enter_trigger = $Area3D
+@onready var enter_trigger = $EnterTrigger
 
 @export var debug_enabled: bool = false
 

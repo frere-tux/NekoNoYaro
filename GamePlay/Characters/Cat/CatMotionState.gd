@@ -15,13 +15,13 @@ func _ready() -> void:
 	player_cat = owner as Cat
 	assert(player_cat != null, "The CatMotionState state type must be used only in the Cat scene. It needs the owner to be a Cat node.")
 	
-func compute_state_from_mouse_motion(_event: InputEvent) -> String:
-	var mouse_motion_event := _event as InputEventMouseMotion
+static func compute_state_from_screen_event(_event: InputEvent) -> String:
+	var screen_drag_event := _event as InputEventScreenDrag
 	
-	if mouse_motion_event and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if mouse_motion_event.relative.y <= -5:
+	if screen_drag_event:
+		if screen_drag_event.relative.y <= -5:
 			return JUMPING
-		elif mouse_motion_event.relative.y >= 5:
+		elif screen_drag_event.relative.y >= 5:
 			return SLIDING
 
 	return ""

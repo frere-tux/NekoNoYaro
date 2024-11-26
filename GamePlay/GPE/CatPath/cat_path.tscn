@@ -6,7 +6,7 @@
 resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f7cjw"]
-size = Vector3(0.983154, 0.799927, 1.92676)
+size = Vector3(1.27759, 0.976257, 1.92676)
 
 [node name="CatPath" type="Path3D"]
 curve = SubResource("Curve3D_q4fco")
@@ -16,10 +16,10 @@ script = ExtResource("1_dkdqf")
 transform = Transform3D(0.0105613, 0, -0.999944, 0, 1, 0, 0.999944, 0, 0.0105613, -0.241379, 0, -0.00142277)
 loop = false
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="EnterTrigger" type="Area3D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterTrigger"]
 shape = SubResource("BoxShape3D_f7cjw")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_path_trigger_entered"]
+[connection signal="body_entered" from="EnterTrigger" to="." method="_on_path_trigger_entered"]
