@@ -6,6 +6,7 @@
 resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f7cjw"]
+resource_local_to_scene = true
 size = Vector3(1.27759, 0.976257, 1.92676)
 
 [node name="CatPath" type="Path3D"]
